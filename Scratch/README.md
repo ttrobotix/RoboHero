@@ -1,18 +1,20 @@
 TTRobotix RoboHero Scratch Plug
 ===============================
 
-with this plug you can control your RoboHero by Scratch.
+With this plug you can control your RoboHero by Scratch.
 
 
-Scratch X with RoboHero Plug
+RoboHero Scratch
 ----------------------------
 http://scratchx.org/?url=https://ttrobotix.github.io/RoboHero/Scratch/robohero.js#scratch
+
 
 
 More about this Plug:
 ---------------------
 http://scratchx.org/
 
+Native scratch have no HTTP API plug, Scratch X is a mod ver for Java Script Plug.
 
 How to save/load Project:
 -------------------------
