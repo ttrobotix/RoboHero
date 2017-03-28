@@ -9,7 +9,7 @@
 var robohero_ap_url = "http://192.168.4.1/"; ;
 var robohero_mdns_url = "http://robohero.local/";
 
-var robohero_url = robohero_ap_url ;
+var robohero_url = robohero_ap_urlFi ;
 
 // motion embeded in robohero firmware and it's execute time ;
 var controllerPM = [ 99,1,2,3, 5,4,6,11,12 ]
@@ -221,8 +221,9 @@ var controlServo = function( servo, value ) {
             ['w', 'Get Up', 'motionGetUp'],
 
             ['w', 'AdvanceMotion %m.pmsMotion', 'runPmsByName', pmsMotionNames[0] + "" ],
-            [' ', 'Execute Motion JSON: %s', 'executeMotion', robohero_url ],
             /*
+            [' ', 'Execute Motion JSON: %s', 'executeMotion', robohero_url ],
+
             ['w', 'Sport Motion %m.pmsMotion', 'runPmsByName', 'Bow'],
             ['w', 'Dance AdvanceMotion %m.pmsMotion', 'runPmsByName', 'Bow'],
             ['w', 'Combat AdvanceMotion %m.pmsMotion', 'runPmsByName', 'Bow']
