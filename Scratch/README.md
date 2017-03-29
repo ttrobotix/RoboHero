@@ -14,7 +14,7 @@ More about this Plug:
 ---------------------
 http://scratchx.org/
 
-Native scratch have no HTTP API plug, Scratch X is a mod ver for Java Script Plug.
+Native scratch have no HTTP functions, Scratch X is a mod ver for Java Script Plug.
 
 How to save/load Project:
 -------------------------
