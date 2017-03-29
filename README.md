@@ -1,14 +1,26 @@
 ## RoboHero Advance Resource
-advance education resource for TTRobotix RoboHero.
+Advance education resource for TTRobotix RoboHero. include:.
+
++ Arduino Compatible
++ Scratch
++ Http API
+
+
+## Arduino Compatible
+
+Follow these steps you can programming your RoboHero By Arduino IDE.
+
+How To Programming RoboHero By Arduino:  
+> <https://github.com/ttrobotix/RoboHero/tree/master/Arduino>
 
 
 ## Scratch
 Control RoboHero via MIT education programming language: Scratch.
+![Screen shot of Scratch Plugin](https://ttrobotix.github.io/RoboHero/img/scratch.png)
+How To Control RoboHero Scratch Plugin page:
+> <https://github.com/ttrobotix/RoboHero/tree/master/Scratch>
 
-go to RoboHero Scratch Plugin page.
-<https://github.com/ttrobotix/RoboHero/tree/master/Scratch>
 
-![Screen shot of Scratch Plugin](https://ttrobotix.github.com/RoboHero/img/scratch.png)
 
 
 
@@ -73,7 +85,7 @@ RoboHero address is http://192.168.4.1/ default, if you disable Wifi ap mode (se
 
 ### Motion Data
 
-RoboHero's motion data is a JSON text, echo motion has multiple frame, each frame has 17 servo degress and 1 running time (in ms). You can generator share link from app, share to your Facebook or Friend.
+RoboHero's motion data is a JSON text, echo motion has multiple frame-array, each frame has 17 servo degress and 1 running time (in ms). You can generator share link from app, share to your Facebook or Friend.
 
 motion data Sample:
 ```javascript
@@ -87,7 +99,7 @@ motion data Sample:
  }
  ```
 
-open <http://api.ttrobotix.com/motion/129>  from phone and you can import this motion from url.
+open <http://api.ttrobotix.com/motion/129>  from phone and you can import this motion to your app from url.
 
 
 
@@ -99,23 +111,24 @@ App execute motion thought this api, send first frame and wait for t1, and send 
 
 | Params  | Description  |
 | :------------ |:---------------|
-| m0 | Servo degree |
-| m1 | Servo degree |
-| m2 | Servo degree |
-| m3 | Servo degree |
-| m4 | Servo degree |
-| m5 | Servo degree |
-| m6 | Servo degree |
-| m7 | Servo degree |
-| m8 | Servo degree |
-| m9 | Servo degree |
-| m10 | Servo degree |
-| m11 | Servo degree |
-| m12 | Servo degree |
-| m13 | Servo degree |
-| m14 | Servo degree |
-| m15 | Servo degree |
-| m16 | Servo head degree |
+| m0 | Servo 0 degree, left leg |
+| m1 | Servo 1 degree, left leg  |
+| m2 | Servo 2 degree, left leg  |
+| m3 | Servo 3 degree, left leg  |
+| m4 | Servo 4 degree, left leg  |
+| m5 | Servo 5 degree, left hand |
+| m6 | Servo 6 degree, left hand |
+| m7 | Servo 7 degree, left hand |
+| m8 | Servo 8 degree, right hand |
+| m9 | Servo 9 degree, right hand |
+| m10 | Servo 10 degree, right hand|
+| m11 | Servo 11 degree, right leg|
+| m12 | Servo 12 degree, right leg |
+| m13 | Servo 13 degree, right leg |
+| m14 | Servo 14 degree, right leg |
+| m15 | Servo 15 degree, right leg |
+| m16 | Servo 16 degree, head |
 | t1 | Frame running time in ms |
 
- ![Screen of Servo Index](https://ttrobotix.github.com/RoboHero/img/servo_index.png)
+Servo index reference:
+ ![Screen of Servo Index](https://ttrobotix.github.io/RoboHero/img/servo_index.png)
