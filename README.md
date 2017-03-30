@@ -5,6 +5,7 @@ Advance education resource for TTRobotix RoboHero. include:.
 + Scratch
 + Http API
 
+![RoboHero](http://ttrobotix.github.io/RoboHero/img/robohero_stand.png)
 
 ## Arduino Compatible
 
@@ -17,6 +18,7 @@ How To Programming RoboHero By Arduino:
 ## Scratch
 Control RoboHero via MIT education programming language: Scratch.
 ![Screen shot of Scratch Plugin](https://ttrobotix.github.io/RoboHero/img/scratch.png)
+
 How To Control RoboHero Scratch Plugin page:
 > <https://github.com/ttrobotix/RoboHero/tree/master/Scratch>
 
@@ -26,9 +28,9 @@ How To Control RoboHero Scratch Plugin page:
 
 
 ## HTTP API
-Control RoboHero with Http API
+Control RoboHero with HTTP API
 
-RoboHero address is http://192.168.4.1/ default, if you disable Wifi ap mode (see Arduino for more information), your address will be http://robohero.local/ .
+RoboHero address is http://192.168.4.1/ default, if you disable Wifi ap mode (see ![Arduino](https://github.com/ttrobotix/RoboHero/tree/master/Arduino) for more information), your address will be http://robohero.local/ .
 
 ### Running Motion embed in RoboHero:
 
@@ -36,7 +38,7 @@ RoboHero address is http://192.168.4.1/ default, if you disable Wifi ap mode (se
 
 | Motion  | pm  |
 | :------------ |---------------:|
-| Stand      | 99 |
+| Stand      | 99 | this command will enable all your servo |
 | Forward      | 1 |
 | Backward      | 2 |
 | MoveLeft      | 5 |
@@ -85,7 +87,7 @@ RoboHero address is http://192.168.4.1/ default, if you disable Wifi ap mode (se
 
 ### Motion Data
 
-RoboHero's motion data is a JSON text, echo motion has multiple frame-array, each frame has 17 servo degress and 1 running time (in ms). You can generator share link from app, share to your Facebook or Friend.
+RoboHero's motion data is a JSON text, echo motion has multiple frame-array, each frame has 17 servo and 1 running time (in ms). You can generator share link from app, share to your Facebook or Friend.
 
 motion data Sample:
 ```javascript
