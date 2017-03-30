@@ -5,7 +5,7 @@ Advance education resource for TTRobotix RoboHero. include:.
 + Scratch
 + Http API
 
-![RoboHero](http://ttrobotix.github.io/RoboHero/img/robohero_stand.png)
+![RoboHero](http://ttrobotix.github.io/RoboHero/img/robohero_stand.jpg)
 
 ## Arduino Compatible
 

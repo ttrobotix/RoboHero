@@ -2,7 +2,7 @@
 
 With these source, you can custom your robohero everything!
 
-![RoboHero](http://ttrobotix.github.io/RoboHero/img/buildyourown.png)
+![RoboHero](http://ttrobotix.github.io/RoboHero/img/buildyourown.jpg)
 ## Setup Guide
 
 1. Install USB Driver
