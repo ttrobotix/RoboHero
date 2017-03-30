@@ -2,24 +2,24 @@
 
 With these source, you can custom your robohero everything!
 
-
+![RoboHero](http://ttrobotix.github.io/RoboHero/img/buildyourown.png)
 ## Setup Guide
 
-* Install USB Driver
-* Install Arduino IDE
-* Setup Board Support
-* Install Servo Library
-* Compile And Run
+1. Install USB Driver
+2. Install Arduino IDE
+3. Setup Board Support
+4. Install Servo Library
+5. Compile And Run
 
 ### 1.Install USB Driver
 You need install PL2303 Driver for your computer first.
 http://www.prolific.com.tw/US/ShowProduct.aspx?pcid=41&showlevel=0041-0041
-choose mac or windows by your OS is.
+choose mac or windows by your OS.
 
 
-### 2.Install Arduino
+### 2.Install Arduino IDE
 
-Download and install lastest Arduino IDE from arduino.cc:
+Download and install lastest Arduino IDE from <http://www.arduino.cc/>
 ![Arduino Download Web](http://ttrobotix.github.io/RoboHero/img/arduino1.png)
 
 
@@ -58,12 +58,12 @@ Change these value to make sure you have the right setting.
 
 RoboHero has a PCA9685 16-way PWM chip, you need install library for it
 
-There are two ways to install Servo Drive.
-* install from arduino and modify #define youself.
-* download modified zip
+There are two ways to install Servo Library.
+* Install from Arduino and modify #define youself.
+* Download modified zip
 
 
-#### install from arduino and modify #define youself.
+#### Install from Arduino and modify #define youself.
 go to Manage Libraries.
 ![Arduino Download Web](http://ttrobotix.github.io/RoboHero/img/arduino_lib.png)
 search "adafruit servo" and you will see "Adafruit PWM Servo Drive Library", install it.
@@ -77,7 +77,8 @@ Open "Adafruit_PWMServoDriver.cpp"
 add // to the other #define but leave "#define WIRE Wire" uncomment ;
 ![Arduino Download Web](http://ttrobotix.github.io/RoboHero/img/arduino_wire.png)
 
-#### download modified zip
+
+#### Download modified zip
 Download <http://ttrobotix.github.io/RoboHero/Arduino/Adafruit_PWM_Servo_Driver_Library.zip>
 Add from Sketch -> Include Library -> Add. ZIP Library...
 ![Arduino Download Web](http://ttrobotix.github.io/RoboHero/img/arduino_addlib.png)
@@ -87,12 +88,15 @@ Add from Sketch -> Include Library -> Add. ZIP Library...
 Plug RoboHero with a USB Cable to PC, a new Port will appear.
 
 > Select Port:
-> Mac: /dev/cu.usbserial
-> Windows: COM1 ~ COMX, a new COM Port will add when you plug RoboHero
+> Mac: /dev/cu.usbserial, /dev/cu.usbserial will appear when you plug-in
+> Windows: COM1 ~ COMX, a new COM Port will appear when you plu-in
 
 ![Arduino Download Web](http://ttrobotix.github.io/RoboHero/img/arduino_addport.png)
-if you have any problem leave comment let me now
+If you have any problem leave comment let us know.
 
+http://ttrobotix.com/contact
+or
+yougangkuo - at - thundertiger.com
 
 
 
