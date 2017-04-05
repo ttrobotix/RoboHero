@@ -9,7 +9,7 @@
 var robohero_ap_url = "http://192.168.4.1/"; ;
 var robohero_mdns_url = "http://robohero.local/";
 
-var robohero_url = robohero_ap_urlFi ;
+var robohero_url = robohero_ap_url ;
 
 // motion embeded in robohero firmware and it's execute time ;
 var controllerPM = [ 99,1,2,3, 5,4,6,11,12 ]
