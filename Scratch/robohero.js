@@ -115,7 +115,8 @@ var findRobohero = function(callback) {
 var controllerServo = function( arr, callback) {
   console.log("controllerServo func run") ;
   var url = robohero_url + "online?" ;
-  for ( var j = 0 ; j <= 16 ; j++ ) {
+  url = url + "m0=" + arr[j] ;
+  for ( var j = 1 ; j <= 16 ; j++ ) {
       url = url + "&m" + j + "=" + arr[j] ;
   }
   url = url + "&t1=" + arr[17] ;
@@ -245,16 +246,14 @@ var controlServo = function( servo, value ) {
         console.log("Run Motion") ;
         console.log("string len = " + str.length ) ;
 
-        var dic = JSON.parse( str ) ;
-        if ( dic == undefined ) {
+        try {
+            var dic = JSON.parse( str ) ;
+            executeMotion_global( dic, callback ) ;
+        } catch(e) {
             console.log("json format error") ;
             alert("JSON Format Error") ;
             callback() ;
         }
-        else {
-            executeMotion_global( dic, callback ) ;
-        }
-
     } ;
 
     ext.executeFrame = function( frameStr, callback) {
@@ -272,10 +271,6 @@ var controlServo = function( servo, value ) {
             alert("Frame Format Error" + e) ;
             callback() ;
         }
-
-
-
-
     } ;
 
     ext._getStatus = function() {
