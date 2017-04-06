@@ -111,6 +111,59 @@ var findRobohero = function(callback) {
   });
 } ;
 
+
+var controllerServo = function( arr, callback) {
+  console.log("controllerServo func run") ;
+  var url = robohero_url + "online?" ;
+  for ( var j = 0 ; j <= 16 ; j++ ) {
+      url = url + "&m" + j + "=" + arr[j] ;
+  }
+  url = url + "&t1=" + arr[17] ;
+
+  $.ajax({
+    url: url,
+    timeout: 500,
+    type: 'get',
+    success: function(data) {
+      console.log( "control servo return" ) ;
+      if ( callback != undefined ) {
+          callback() ;
+      }
+
+    }
+  });
+}
+
+
+var breakMotion = false ; // 中斷動作用
+var executeMotion_global = function( data, callback ) {
+  breakMotion = false ;
+  var motionIndex = 0 ;
+  var motion = data["motion"] ;
+
+  var loopSendMotion = function() {
+    console.log("lopSendMotion looped at frame = " + motionIndex) ;
+    if (motion[motionIndex] != undefined ) {
+      if ( motion[motionIndex].length == 18 ) {
+        controllerServo( motion[motionIndex] ) ;
+        var ms = motion[motionIndex][17] ;
+        motionIndex = motionIndex + 1 ;
+        setTimeout( loopSendMotion, ms) ;
+      }
+      else {
+        console.log("server count error @@" + motion[motionIndex].length ) ;
+        console.log("error row = " + JSON.stringify( motion[motionIndex] )) ;
+      }
+    }
+    else {
+      // running end
+      callback() ;
+    }
+  }
+  loopSendMotion() ;
+
+}
+
 /*
   set servo degree
 */
@@ -191,6 +244,38 @@ var controlServo = function( servo, value ) {
     ext.executeMotion = function( str, callback) {
         console.log("Run Motion") ;
         console.log("string len = " + str.length ) ;
+
+        var dic = JSON.parse( str ) ;
+        if ( dic == undefined ) {
+            console.log("json format error") ;
+            alert("JSON Format Error") ;
+            callback() ;
+        }
+        else {
+            executeMotion_global( dic, callback ) ;
+        }
+
+    } ;
+
+    ext.executeFrame = function( frameStr, callback) {
+        console.log("Run Frame 5") ;
+        console.log("string len = " + frameStr.length ) ;
+        var line = "{ \"arr\":[" + frameStr + "] }" ;
+
+        try {
+            var arr = JSON.parse(line);
+            console.log("get arr, run it,") ;
+            console.log( arr.arr ) ;
+            controllerServo( arr.arr, callback ) ;
+        } catch(e) {
+            console.log("frame format error" + e )
+            alert("Frame Format Error" + e) ;
+            callback() ;
+        }
+
+
+
+
     } ;
 
     ext._getStatus = function() {
@@ -221,14 +306,19 @@ var controlServo = function( servo, value ) {
             ['w', 'Get Up', 'motionGetUp'],
 
             ['w', 'AdvanceMotion %m.pmsMotion', 'runPmsByName', pmsMotionNames[0] + "" ],
-            /*
-            [' ', 'Execute Motion JSON: %s', 'executeMotion', robohero_url ],
 
+
+
+            /*
             ['w', 'Sport Motion %m.pmsMotion', 'runPmsByName', 'Bow'],
             ['w', 'Dance AdvanceMotion %m.pmsMotion', 'runPmsByName', 'Bow'],
             ['w', 'Combat AdvanceMotion %m.pmsMotion', 'runPmsByName', 'Bow']
             */
+
+            ['w', 'Execute Frame: %s', 'executeFrame', "135, 135, 135, 135, 135, 135, 200, 135, 135, 60, 135, 135, 135, 135, 135, 135, 90 ,500" ],
+            ['w', 'Execute Motion (JSON): %s', 'executeMotion', "" ],
             [' ', 'Set Servo, index: %n (0~16), degree: %n (0~270)', 'setServo', 0, 135]
+
         ],
         menus: {
           basicMotion: ['this way', 'that way', 'reverse'],
