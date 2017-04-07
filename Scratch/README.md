@@ -1,4 +1,4 @@
-## TTRobotix RoboHero Scratch Plug
+## TTRobotix RoboHero Scratch Plug (Under construction)
 
 With this plug you can control your RoboHero by Scratch.
 
@@ -9,20 +9,34 @@ You can start Scratch with RoboHero.
 
 ![Screen shot of Scratch Plugin](https://ttrobotix.github.io/RoboHero/img/scratch.png)
 
-### How To Use Scratch with RoboHero ( working draft )
+### How To Use Scratch with RoboHero
 
-1. Connect and Set address to Scratch
-Connect your PC to RoboHero's Wifi AP, your RoboHero's IP will be "http://192.168.4.1/", or you can enable the wifi client mode ( see Arduino for more information).
 
-2. Open RoboHero Scratch Plug page, you will see the light behind the plug:
+1. Connect to Internet and open <http://scratchx.org/?url=https://ttrobotix.github.io/RoboHero/Scratch/robohero.js#scratch> .
+
+2. Connect to RoboHero's Wifi
+Connect your PC to RoboHero's Wifi AP, your RoboHero's IP will be "http://192.168.4.1/", or you can enable the wifi client mode, your RoboHero's ip will be "http://robohero.local/" ( see Arduino for more information).
+
+3. Switch to More Blocks, you will see the RoboHero blocks.
+
+4. Open RoboHero Scratch Plug page, you will see the light behind the plug:
 
 green: found RoboHero
 yellow: search for RoboHero
 
-Use RoboHero Address to set url or FindRoboHero to find.
-[x] oolo
+Using 'RoboHero Address' to set the ip you used , or "FindRoboHero", which will find your RoboHero in local network
 
-3. when the light is green,
+5. if the light turn green, you can control RoboHero with Scratch now!
+
+
+
+
+
+
+
+### Demo
+
+working
 
 
 

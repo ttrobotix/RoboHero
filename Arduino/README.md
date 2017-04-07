@@ -44,13 +44,15 @@ Now your arduino ide has support, change Board to "Generic ESP8266 Module":
 ![Arduino Download Web](http://ttrobotix.github.io/RoboHero/img/arduino6.png)
 
 Change these value to make sure you have the right setting.
+
 | Field  | Description  |
-| :------------ |:---------------|
+| :------ |:-------|
 | Board  | Generic ESP8266 Module  |
 | Flash Size  | 2M (1M SPIFFS)  |
 | CPU Frequency| 80 MHZ  |
 | Reset Method | nodemcu  |
 | Upload Speed | 115200  |
+
 ![Arduino Download Web](http://ttrobotix.github.io/RoboHero/img/arduino_setting.png)
 
 
