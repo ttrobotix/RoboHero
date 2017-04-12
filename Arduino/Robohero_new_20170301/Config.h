@@ -16,6 +16,6 @@
 
 /* for connect your home wifi-ap */
 
-#define CLIENT_SSID “YourHomeSSID”
-#define CLIENT_PASSWORD “YourPassword”
+#define CLIENT_SSID "YourHomeSSID"
+#define CLIENT_PASSWORD "YourHomePassword"
 
