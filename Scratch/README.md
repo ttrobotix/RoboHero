@@ -12,21 +12,29 @@ You can start Scratch with RoboHero.
 ### How To Use Scratch with RoboHero
 
 
-1. Connect to Internet and open <http://scratchx.org/?url=https://ttrobotix.github.io/RoboHero/Scratch/robohero.js#scratch> .
 
+1. Connect to Internet and open <http://scratchx.org/?url=https://ttrobotix.github.io/RoboHero/Scratch/robohero.js#scratch> .
+![](https://ttrobotix.github.io/RoboHero/Scratch/img/all.png)
 2. Connect to RoboHero's Wifi
 Connect your PC to RoboHero's Wifi AP, your RoboHero's IP will be "http://192.168.4.1/", or you can enable the wifi client mode, your RoboHero's ip will be "http://robohero.local/" ( see Arduino for more information).
 
 3. Switch to More Blocks, you will see the RoboHero blocks.
 
+![](https://ttrobotix.github.io/RoboHero/Scratch/img/blocks.png)
+
 4. Open RoboHero Scratch Plug page, you will see the light behind the plug:
 
-green: found RoboHero
-yellow: search for RoboHero
 
-Using 'RoboHero Address' to set the ip you used , or "FindRoboHero", which will find your RoboHero in local network
 
-5. if the light turn green, you can control RoboHero with Scratch now!
+
+green: found RoboHero ![](https://ttrobotix.github.io/RoboHero/Scratch/img/online.png)
+yellow: search for RoboHero ![](https://ttrobotix.github.io/RoboHero/Scratch/img/search.png)
+
+Using 'RoboHero Address' ![](https://ttrobotix.github.io/RoboHero/Scratch/img/RoboHeroAddress.png) to set the ip you used , or "FindRoboHero", which will find your RoboHero in local network
+
+
+
+5. if the light turn green ![](https://ttrobotix.github.io/RoboHero/Scratch/img/online.png) you can control RoboHero with Scratch now!
 
 
 
@@ -36,7 +44,10 @@ Using 'RoboHero Address' to set the ip you used , or "FindRoboHero", which will 
 
 ### Demo
 
-working
+Drag When Green-Flag Click，set up RoboHeroAddress First, you can set wait or for-loop with a motion.
+
+Drag "When direction key pressd" with four directions,
+![](https://ttrobotix.github.io/RoboHero/Scratch/img/sample1.png)
 
 
 
