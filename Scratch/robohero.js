@@ -124,14 +124,12 @@ var controllerServo = function( arr, callback) {
   console.log("Control Servo raw url=" + url ) ;
   $.ajax({
     url: url,
-    timeout: 500,
-    type: 'get',
-    success: function(data) {
-      console.log( "control servo return" ) ;
-      if ( callback != undefined ) {
-          callback() ;
-      }
-
+    timeout: 1000,
+    type: 'get'
+  }).done(function(data){
+    console.log("controlServo Done data= " + data)
+    if ( callback != undefined ) {
+        callback() ;
     }
   });
 }
