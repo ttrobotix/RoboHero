@@ -9,7 +9,7 @@
 var robohero_ap_url = "http://192.168.4.1/"; ;
 var robohero_mdns_url = "http://robohero.local/";
 
-var robohero_url = robohero_ap_url ; 
+var robohero_url = robohero_ap_url ;
 
 // motion embeded in robohero firmware and it's execute time ;
 var controllerPM = [ 99,1,2,3, 5,4,6,11,12 ]
@@ -115,12 +115,13 @@ var findRobohero = function(callback) {
 var controllerServo = function( arr, callback) {
   console.log("controllerServo func run") ;
   var url = robohero_url + "online?" ;
-  url = url + "m0=" + arr[j] ;
+  url = url + "m0=" + arr[0] ;
   for ( var j = 1 ; j <= 16 ; j++ ) {
       url = url + "&m" + j + "=" + arr[j] ;
   }
   url = url + "&t1=" + arr[17] ;
 
+  console.log("Control Servo raw url=" + url ) ;
   $.ajax({
     url: url,
     timeout: 500,
@@ -263,7 +264,7 @@ var controlServo = function( servo, value ) {
 
         try {
             var arr = JSON.parse(line);
-            console.log("get arr, run it,") ;
+            console.log("get executeFrame Arr, run it:") ;
             console.log( arr.arr ) ;
             controllerServo( arr.arr, callback ) ;
         } catch(e) {
