@@ -53,20 +53,33 @@ Japan: <http://api.ttrobotix.com/blockly/demos/robohero/index.html?lang=jp> .
 
 if the language is not changed, press Refresh to reload.
 
-### Demo
-todo...
-
 ### RoboHero Blocks
 
-RoboHero URL:
+1. RoboHero URL:
+![](https://ttrobotix.github.io/RoboHero/Blockly/img/roboherourl.png)
+Set RoboHero's url/address.
 
-Normal Motion、Sport Motion、Dance Motion:
+2. Normal Motion、Sport Motion、Dance Motion:
+![](https://ttrobotix.github.io/RoboHero/Blockly/img/motions.png)
+you can run different motion on RoboHero.
 
+3. Execute Motion(JSON):
+![](https://ttrobotix.github.io/RoboHero/Blockly/img/json.png)
+You can run motion from RoboHero App's Motion Editor
+press Share in the Motion-Editor
+![](https://ttrobotix.github.io/RoboHero/Blockly/img/appsharebtn.png)
+Copy the url from Share function
+![](https://ttrobotix.github.io/RoboHero/Blockly/img/appshareurl.png)
 
-Execute Motion(JSON):
+Open the Url from app, copy the motion json here.
+![](https://ttrobotix.github.io/RoboHero/Blockly/img/appshare.png)
 
-Execute Frame:
+4. Execute Frame:
+![](https://ttrobotix.github.io/RoboHero/Blockly/img/frame.png)
+you can set RoboHero 17 servo with by single Frame in ms.
 
+Servo index reference:
+ ![Screen of Servo Index](https://ttrobotix.github.io/RoboHero/img/servo_index.png)
 
 ### Google Blockly:
 <https://developers.google.com/blockly/>
