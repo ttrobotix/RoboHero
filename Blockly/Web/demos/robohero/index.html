@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>RoboHero Blockly Test / 3D </title>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="./robohero_blockly/FileSaver.js"></script>
+  <script src="../interpreter/acorn_interpreter.js"></script>
+
+  <script src="../../blockly_compressed.js"></script>
+  <script src="../../blocks_compressed.js"></script>
+  <script src="../../javascript_compressed.js"></script>
+  <script src="../../msg/js/en.js"></script>
+
+  <script src="./robohero_blockly/lang.js?012"></script>
+  <script src="./robohero_blockly/langMenu.js?0112"></script>
+  <script src="./robohero_blockly/robohero.js?06"></script>
+  <script src="./robohero_blockly/blockdef.js?12"></script>
+  <script src="./robohero_blockly/stub.js?001"></script>
+
+  <script >
+
+  </script>
+  <style>
+    body {
+      background-color: #fff;
+      font-family: sans-serif;
+    }
+    h1 {
+      font-weight: normal;
+      font-size: 140%;
+    }
+
+	#blocklyDiv {
+		height: 70vh;
+		margin-left: 0px ;
+		margin-right: 0px ;
+		width: 100% ;
+	}
+
+
+	div.three {
+	}
+
+	div.three iframe {
+		width: 48vh ;
+		height: 36vh ;
+	}
+
+	div.left {
+		width: 99% ;
+		float: left ;
+	}
+
+	div.right {
+		position: absolute ;
+		z-index: 3 ;
+		display: block;
+		float: right ;
+
+		right: 10px ;
+		top: 100px ;
+	}
+
+	div.content {
+		height: 70vh;
+		padding: 0px ;
+	}
+
+	div.navi {
+		margin-top: 0px ;
+		width: 100% ;
+	}
+
+	div.footer {
+		height: 0px ;
+		width: 100% ;
+	}
+
+	div.clearboth {
+		clear: both ;
+	}
+  </style>
+</head>
+<body><div class="content"><div class="navi">
+	<h1>RoboHero Blockly v1.0
+			<a class="btn btn-link btn-xs" target=_blank href="https://github.com/ttrobotix/RoboHero"> <span class="glyphicon glyphicon-link"></span> Github</a>
+			<a class="btn btn-link btn-xs" target=_blank href="http://robohero.ttrobotix.com/"> <span class="glyphicon glyphicon-globe"></span> About RoboHero</a> </h1>
+		<p>
+			<button id="runButton" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-play-circle"></span> Run</button>
+			&nbsp&nbsp
+			<button id="saveButton" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+			<button id="openButton" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-folder-open"></span> Open</button>
+			<input type="file" id="load" style="display: none;"/>
+			&nbsp&nbsp
+			<button id="undoButton" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-arrow-left"></span> Undo</button>
+			<button id="redoButton" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-arrow-right"></span> Redo</button>
+			&nbsp&nbsp
+			<button id="previewButton" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-film"></span> Preview</button>
+
+			&nbsp&nbsp
+			<button id="removeButton" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Remove All Block</button>
+			&nbsp&nbsp
+			<select id="languageMenu"></select>
+			<button id="langButton" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-globe"></span> Change</button>
+		</P>
+	</div>
+
+	  <div class="left">
+		<div id="blocklyDiv" ></div>
+	  </div>
+	  <div class="right">
+		<div class="three">
+			<iframe id="robohero_frame" src="http://api.ttrobotix.com/aframe/demo.html">
+			</iframe>
+		</div>
+	  </div>
+	  <div class="footer">
+	  </div>
+</div>
+  <xml id="toolbox" style="display: none">
+
+  </xml>
+  <script>
+	var workspace ;
+	var iframe ;
+
+	function xmlToString(xmlData) {
+
+		var xmlString;
+		//IE
+		if (window.ActiveXObject){
+			xmlString = xmlData.xml;
+		}
+		// code for Mozilla, Firefox, Opera, etc.
+		else{
+			xmlString = (new XMLSerializer()).serializeToString(xmlData);
+		}
+		return xmlString;
+	}
+
+	var init_robohero_blockly = function()
+	{
+		console.log("Init Start@@") ;
+		$.get( "./robohero_blockly/toolbox.xml?11", function( data ) {
+			var str = xmlToString( data ) ;
+			if ( langMenu[Code.getLang()] != undefined ) {
+				console.log("Enable Lang Translation to " + Code.getLang() ) ;
+
+				initManuLang() ;
+			}
+
+
+			workspace = Blockly.inject('blocklyDiv', {
+				media: '../../media/',
+				toolbox:  str,
+				zoom : {
+					controls : true,
+					wheel : true,
+					startScale : 1,
+					maxScale : 3,
+					minScale : 0.3,
+					scaleSpeed : 1.2 }
+				}
+			);
+
+			Code.init() ;
+
+			//console.log("Injected @@ data=" + str) ;
+		});
+
+		//Blockly.JavaScript.addReservedWords('exit'); <= this is must be??
+	} ;
+
+	init_robohero_blockly() ;
+	/*
+    var workspace = Blockly.inject('blocklyDiv',
+        {media: '../../media/',
+         toolbox: document.getElementById('toolbox')});
+		 */
+
+
+	var myInterpreter = null;
+    var runner;
+	var latestCode = '';
+
+    function initApi(interpreter, scope) {
+      // Add an API function for the alert() block, generated for "text_print" blocks.
+
+
+      var wrapper = function(text) {
+        text = text ? text.toString() : '';
+        //outputArea.value = outputArea.value + '\n' + text;
+		console.log("Warpper Text=" + text ) ;
+      };
+      interpreter.setProperty(scope, 'alert',
+          interpreter.createNativeFunction(wrapper));
+
+	  interpreter.setProperty(scope, 'console.log',
+          interpreter.createNativeFunction(wrapper));
+
+      // Add an API function for the prompt() block.
+      var wrapper = function(text) {
+        text = text ? text.toString() : '';
+        return interpreter.createPrimitive(prompt(text));
+      };
+      interpreter.setProperty(scope, 'prompt',
+          interpreter.createNativeFunction(wrapper));
+
+      // Add an API for the wait block.  See wait_block.js
+      initInterpreterWaitForSeconds(interpreter, scope);
+	  registerBlocklyWithRoboheroAsyncFunction(interpreter, scope) ;
+	  console.log("has register wait for seconds") ;
+
+	  /*
+      // Add an API function for highlighting blocks.
+      var wrapper = function(id) {
+        id = id ? id.toString() : '';
+        return interpreter.createPrimitive(highlightBlock(id));
+      };
+      interpreter.setProperty(scope, 'highlightBlock',
+          interpreter.createNativeFunction(wrapper));
+		  */
+    }
+
+
+    function resetInterpreter() {
+      myInterpreter = null;
+      if (runner) {
+        clearTimeout(runner);
+        runner = null;
+      }
+    }
+
+
+
+    function runCode_old() {
+      // Generate JavaScript code and run it.
+      window.LoopTrap = 1000;
+
+	  /*
+      Blockly.JavaScript.INFINITE_LOOP_TRAP =
+          'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+		  */
+
+	console.log( "Blockly = " + Blockly ) ;
+	console.log( "Blockly.JavaScript = " + Blockly.JavaScript ) ;
+
+      var code = Blockly.JavaScript.workspaceToCode(workspace);
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      try {
+        eval(code);
+      } catch (e) {
+        alert(e);
+      }
+    }
+
+
+    function runCode() {
+
+      if (!myInterpreter) {
+		latestCode = Blockly.JavaScript.workspaceToCode(workspace);
+		console.log("latest code = " + latestCode) ;
+        // First statement of this code.
+        // Clear the program output.
+        // resetStepUi(true);
+        //runButton.disabled = 'disabled';
+
+        // And then show generated code in an alert.
+        // In a timeout to allow the outputArea.value to reset first.
+        setTimeout(function() {
+          // Begin execution
+          myInterpreter = new Interpreter(latestCode, initApi);
+          runner = function() {
+            if (myInterpreter) {
+              var hasMore = myInterpreter.run();
+              if (hasMore) {
+                // Execution is currently blocked by some async call.
+                // Try again later.
+                setTimeout(runner, 10);
+              } else {
+                // Program is complete.
+                //outputArea.value += '\n\n<< Program complete >>';
+                resetInterpreter();
+                //resetStepUi(false);
+              }
+            }
+          };
+          runner();
+        }, 1);
+        return;
+      }
+    }
+
+	$(function(){
+
+		Code.init() ; // run before get toolbox @@
+		$("#runButton").click(function(){
+			console.log("press run button") ;
+			runCode() ;
+		}) ;
+
+		iframe = document.getElementById("robohero_frame") ;
+
+		$("#previewButton").click(function(){
+			$("div.right").toggleClass( "hidden" )
+		}) ;
+
+		$("#undoButton").click(function(){
+			workspace.undo( false ) ;
+		}) ;
+
+		$("#redoButton").click(function(){
+			workspace.undo( true ) ;
+		}) ;
+
+		$("#saveButton").click(function(){
+			saveCode() ;
+		}) ;
+
+		$("#removeButton").click(function(){
+			Blockly.mainWorkspace.clear();
+		}) ;
+
+		$( "#langButton" ).click(function() {
+			var languageMenu = document.getElementById('languageMenu');
+			var newLang = encodeURIComponent( languageMenu.options[languageMenu.selectedIndex].value);
+			var search = window.location.search;
+			if (search.length <= 1) {
+			search = '?lang=' + newLang;
+			} else if (search.match(/[?&]lang=[^&]*/)) {
+			search = search.replace(/([?&]lang=)[^&]*/, '$1' + newLang);
+			} else {
+			search = search.replace(/\?/, '?lang=' + newLang + '&');
+			}
+
+			var url = window.location.protocol + '//' + window.location.host + window.location.pathname + search ;
+			console.log("new url = " + url ) ;
+			window.open( url ) ;
+		});
+
+		$("#openButton").click(function(){
+			$("#load").click() ;
+			$("#load").change(function(event){
+				console.log("load is change") ;
+
+				 var files = event.target.files;
+				 if (files.length != 1) {
+					return;
+				 }
+
+				  var reader = new FileReader();
+				  reader.onloadend = function(event) {
+					var target = event.target;
+					if (target.readyState == 2) {
+					  try {
+						var xml = Blockly.Xml.textToDom(target.result);
+					  } catch (e) {
+						alert('Error parsing XML:\n' + e);
+						return;
+					  }
+					  console.log("load is load data ") ;
+					  var count = Blockly.mainWorkspace.getAllBlocks().length;
+					  Blockly.mainWorkspace.clear();
+					  Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
+					}
+					document.getElementById('load').value = '';
+				  };
+				  reader.readAsText(files[0]);
+			}) ;
+		}) ;
+	});
+	
+	function saveCode() {
+		var xml = Blockly.Xml.workspaceToDom(workspace);
+		var content = Blockly.Xml.domToText(xml);
+		var filename = window.prompt('Save Project', 'robohero');
+
+		if ( filename == "" ) {
+			filename = "noname" ;
+		}
+		if( filename ){
+			var blob = new Blob([content], {type: 'text/xml'});
+			saveAs(blob, filename + ".xml");
+		}
+	}
+  </script>
+</body>
+</html>
