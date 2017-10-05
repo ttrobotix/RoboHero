@@ -22,7 +22,7 @@ Connect your PC to RoboHero's Wifi AP, your RoboHero's IP will be "http://192.16
 
 ![](https://ttrobotix.github.io/RoboHero/Blockly/img/blocks.png)
 
-4. Using 'RoboHero Url' ![](https://ttrobotix.github.io/RoboHero/Blockly/img/roboherourl.png) to set the ip you used.
+4. Using 'RoboHero Url' ![](https://ttrobotix.github.io/RoboHero/Blockly/img/roboherourl.png) to set the ip you used. You must use this block first.
 
 
 ### Menu
@@ -57,7 +57,7 @@ if the language is not changed, press Refresh to reload.
 
 1. RoboHero URL:
 ![](https://ttrobotix.github.io/RoboHero/Blockly/img/roboherourl.png)
-Set RoboHero's url/address.
+Set RoboHero's url/address. You must use this block first.
 
 2. Normal Motion、Sport Motion、Dance Motion:
 ![](https://ttrobotix.github.io/RoboHero/Blockly/img/motions.png)
